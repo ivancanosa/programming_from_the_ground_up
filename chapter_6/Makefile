@@ -1,4 +1,4 @@
-EXES = write-records read-records add-year largest-age
+EXES = write-records read-records add-year largest-age add-year-lseek
 AS_FLAGS = -g --32
 LD_FLAGS = -m elf_i386
 
@@ -11,6 +11,9 @@ read-records: read-records.o read-record.o count-chars.o write-newline.o
 	ld $(LD_FLAGS) $^ -o $@
 
 add-year: add-year.o read-record.o write-record.o
+	ld $(LD_FLAGS) $^ -o $@
+
+add-year-lseek: add-year-lseek.o read-record.o write-record.o
 	ld $(LD_FLAGS) $^ -o $@
 
 largest-age: largest-age.o read-record.o
